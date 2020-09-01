@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Main from './components/main/Main';
 import Tropics from "./components/tropics/Tropics";
+import Local from "./components/local/Local";
 
 Vue.config.productionTip = false
 
@@ -17,7 +18,8 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', components: { main:   Main} },
   { path: '/home', components: { main:   Main} },
-  { path: '/tropics', components: { main: Tropics }}
+  { path: '/tropics', components: { main: Tropics }},
+  { path: '/local', components: { main: Local }}
 ]
 
 const router = new VueRouter({

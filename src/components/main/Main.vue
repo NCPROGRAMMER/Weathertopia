@@ -7,7 +7,7 @@
           <v-container class="grey lighten-5"  style="background-color: transparent !important;">
       <v-row>
         <v-col class="image-column" v-for="item in img" :key="item.icon" lg="4" md="6" sm="12" @click="redirect(item.path)" style="padding-bottom: 10px;text-align: center">
-          <img :src="require('../../assets/' + item.path + '.jpg')" :href="'/' + item.path" width="300" height="300" />
+          <img :src="require('../../assets/' + item.path + '.jpg')" :href="'/' + item.path" width="350" height="350" />
           <figcaption style="color: white">{{ item.title }}</figcaption>
         </v-col>
       </v-row>

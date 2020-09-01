@@ -6,7 +6,7 @@
           <h1 class="display-1" style="margin-top: 1%; color: white">Welcome to Weathertopia</h1>
           <v-container class="grey lighten-5"  style="background-color: transparent !important;">
       <v-row no-gutters>
-        <v-col class="image-column" v-for="item in img" :key="item.icon" lg="4" md="6" sm="12" @click="redirect(item.path)" style="padding-bottom: 10px;text-align: center">
+        <v-col class="image-column" v-for="item in img" :key="item.icon" lg="4" md="6" sm="12" @click="redirect(item.path)" style="padding-bottom: 10px;text-align: center;width: fit-content !important">
           <img :src="require('../../assets/' + item.path + '.jpg')" :href="'/' + item.path" width="300" height="300" />
           <figcaption style="color: white">{{ item.title }}</figcaption>
         </v-col>
@@ -82,6 +82,13 @@ cursor: pointer !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+
+}
+
+html 
+{ 
+  
+  overflow-y: auto;
 
 }
 

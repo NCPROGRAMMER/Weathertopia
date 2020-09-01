@@ -1,16 +1,17 @@
 <template>
   <v-app>
-      <v-layout row justify-center>
-      <v-toolbar dark color="blue darken-4" class="hidden-xs-and-down">
-          <img class="mr-3" :src="require('./assets/WeathertopiaIcon.png')" height="40"/>
-          <v-toolbar-title>Weathertopia</v-toolbar-title>
+    <v-layout column wrap justify-space-between>
+          <v-flex>
+      <v-toolbar dark color="white darken-1" class="hidden-xs-and-down">
+          <img class="mr-3" :src="require('./assets/WeathertopiaIcon.png')" @click="goHome()" height="40" style="cursor: pointer !important"/>
+          <v-toolbar-title @click="goHome()" style="cursor: pointer !important">Weathertopia</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
               <v-btn
                       v-for="item in nav"
                       :key="item.icon"
                       :title="item.title"
-                      @click="switchComponents(item.text)"
+                      :href="'/' + item.icon"
               >{{ item.text }}</v-btn>
           </v-toolbar-items>
       </v-toolbar>
@@ -47,27 +48,30 @@
           </v-dialog>
 
       </v-toolbar>
-      <component v-bind:is="component"></component>
-       </v-layout>
+          </v-flex>
+    </v-layout>
+     <v-layout column wrap justify-space-around style="height: 100%;">
+          <v-flex style="display:flex;flex-direction:column">
+          <router-view name="main" style="flex:1;"></router-view>    
+          </v-flex>
+    </v-layout>
   </v-app>
 </template>
 
 <script>
-import Main from './components/main/Main';
-import Tropics from "./components/tropics/Tropics";
 
 export default {
   name: 'App',
-
-  components: {
-    Main,
-    Tropics,
-  },
     data: function() {
         return {
-            component: "Main",
             dialog: false,
             nav: [
+                {
+                    icon: 'home',
+                    text: 'Home',
+                    title: 'Are you ready to head home?',
+                    active: false
+                },
                 {
                     icon: 'local',
                     text: 'Local',
@@ -97,25 +101,14 @@ export default {
                     text: 'Winter',
                     title: 'Is winter coming?',
                     active: false
-                },
-                {
-                    icon: 'prediction',
-                    text: 'Predictions',
-                    title: 'Let\'s take a peak into the future',
-                    active: false
                 }
             ]
         };
     },
     methods: {
-        switchComponents(choice){
-            alert("HEY!");
-            if (choice === "Tropics") {
-                alert("YEP!");
-                this.component = "Tropics";
-            } else {
-                this.component = "Main";
-            }
+        goHome()
+        {
+            window.location = "/home"
         }
     }
 };
@@ -130,12 +123,18 @@ export default {
     }
 
     .theme--dark.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-        background-color: #0D47A1 !important
+        background-color: white !important;
+        color: #3885BB
     }
 
     .v-toolbar__items
     {
         cursor: pointer;
+    }
+
+    .v-toolbar__title
+    {
+        color: #3885BB
     }
 
 </style>

@@ -5,8 +5,8 @@
         <v-layout column align-center>
           <h1 class="display-1" style="margin-top: 1%; color: white">Welcome to Weathertopia</h1>
           <v-container class="grey lighten-5"  style="background-color: transparent !important;">
-      <v-row no-gutters style="max-width: 1200px !important">
-        <v-col class="image-column" v-for="item in img" :key="item.icon" lg="4" md="6" sm="12" @click="redirect(item.path)" style="padding-bottom: 10px;text-align: center;">
+      <v-row>
+        <v-col class="image-column" v-for="item in img" :key="item.icon" lg="4" md="6" sm="12" @click="redirect(item.path)" style="padding-bottom: 10px;text-align: center;max-width: 1200px !important">
           <img :src="require('../../assets/' + item.path + '.jpg')" :href="'/' + item.path" width="300" height="300" />
           <figcaption style="color: white">{{ item.title }}</figcaption>
         </v-col>
